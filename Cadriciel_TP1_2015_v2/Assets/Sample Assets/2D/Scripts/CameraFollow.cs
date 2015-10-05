@@ -37,9 +37,11 @@ public class CameraFollow : MonoBehaviour
 
 	void Update ()
 	{
+		// If the player is grounded or using his jetpack, track him on the vertical axe
 		if (PlatformerCharacter2D.grounded || PlatformerCharacter2D.jetpacking) {
 			TrackPlayerVertical();
 		}
+		// Always track him on the horizontal axe
 		TrackPlayerHorizontal();
 	}
 

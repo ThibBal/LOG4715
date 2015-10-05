@@ -23,10 +23,10 @@ public class PlatformerCharacter2D : MonoBehaviour
 	int jumpsCount = 0;									// Number of jumps done
 	bool jumping = false;								// Whether or not the player is jumping.
 	bool touchingWall = false;							// Whether or not the player is touching a wall.
-	public static bool jetpacking = false;							// Whether or not the player is using his jetpack.
+	public static bool jetpacking = false;				// Whether or not the player is using his jetpack.
 	Transform groundCheck;								// A position marking where to check if the player is grounded.
 	float groundedRadius = .2f;							// Radius of the overlap circle to determine if grounded.
-	public static bool grounded = false;								// Whether or not the player is grounded.
+	public static bool grounded = false;				// Whether or not the player is grounded.
 	Transform ceilingCheck;								// A position marking where to check for ceilings
 	float ceilingRadius = .01f;							// Radius of the overlap circle to determine if the player can stand up.
 	Transform wallCheck;								// A position marking where to check if the player is over a wall.
@@ -44,7 +44,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 	void Update() { 
 		if (showMaxHeight) {  
-			//Not a success...
+			//Not a great success...
 			Debug.DrawLine (new Vector3 (rigidbody2D.position.x - 100, rigidbody2D.position.y +jumpForce/45), new Vector3 (rigidbody2D.position.x + 100, rigidbody2D.position.y + +jumpForce/45), Color.blue, 0, true);
 		} 
 
@@ -55,7 +55,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 	{
 		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
 		grounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
-
 		anim.SetBool("Ground", grounded);
 
 		// Is the player against a wall ?
@@ -99,13 +98,17 @@ public class PlatformerCharacter2D : MonoBehaviour
 				Flip ();
 		}
 		
-		if (grounded && !jumping) { // not in the air
-			jetpacking = false;
-			jumpsCount = 0;
-			rigidbody2D.velocity = new Vector2 (move * maxSpeed, rigidbody2D.velocity.y);
-			
-		} else if (airControl > 0) {
-			rigidbody2D.velocity = new Vector2 (move * maxSpeed * airControl, rigidbody2D.velocity.y);
+		// If the player should jump...
+		if (((jumpsCount < maxJumps) && !touchingWall) && jump) {
+			jumpsCount++;
+			//Debug.Log("This is my jump :"+jumpsCount+"");
+			jumping = true;
+			StartCoroutine (JumpRoutine ());
+			//Check if the player needs to use his jetpack
+		} else if (jumpsCount == maxJumps && CrossPlatformInput.GetButton ("Jump")) {
+			rigidbody2D.AddForce (new Vector2 (jetpackForce, jetpackForce));
+			jetpacking = true;
+			Debug.Log ("I am using my jetpack");
 		}
 
 		// If you need to walljump
@@ -117,18 +120,14 @@ public class PlatformerCharacter2D : MonoBehaviour
 			StartCoroutine(WallJumpRoutine());
 			Debug.Log("I am doing a wall jump");
 		}
-		
-		// If the player should jump...
-		if (((jumpsCount < maxJumps) && !touchingWall) && jump) {
-			jumpsCount++;
-			//Debug.Log("This is my jump :"+jumpsCount+"");
-			jumping = true;
-			StartCoroutine (JumpRoutine ());
-			//Check if the player needs to jumpacking (keep the Jump button pressed and maxJumps)
-		} else if (jumpsCount == maxJumps && CrossPlatformInput.GetButton ("Jump")) {
-			rigidbody2D.AddForce (new Vector2 (jetpackForce, jetpackForce));
-			jetpacking = true;
-			Debug.Log ("I am using my jetpack");
+
+		if (grounded && !jumping) { // not in the air
+			jetpacking = false;
+			jumpsCount = 0;
+			rigidbody2D.velocity = new Vector2 (move * maxSpeed, rigidbody2D.velocity.y);
+			
+		} else if (airControl > 0) {
+			rigidbody2D.velocity = new Vector2 (move * maxSpeed * airControl, rigidbody2D.velocity.y);
 		}
 
 	}
@@ -148,20 +147,17 @@ public class PlatformerCharacter2D : MonoBehaviour
 	// "The just right"
 	IEnumerator JumpRoutine()
 	{
-
-		//rigidbody2D.velocity = Vector2.zero;
+		rigidbody2D.velocity = Vector2.zero;
 		float timer = 0;
 
 		while(CrossPlatformInput.GetButton ("Jump") && timer < jumpTime){
 			//Calculate how far through the jump we are as a percentage
 			//apply the full jump force on the first frame, then apply less force
 			//each consecutive frame
-
 			float proportion= timer / jumpTime;
-				// Create the jump vector with a jumpForce modulate by the number of jumps (100% then 50%, then 33% etc.)
-				Vector2 thisFrameJumpVector = Vector2.Lerp (new Vector2 (0f, jumpForce/jumpsCount), Vector2.zero, proportion);
-				rigidbody2D.AddForce (thisFrameJumpVector);
-
+			// Create the jump vector with a jumpForce modulate by the number of jumps (100% then 50%, then 33% etc.)
+			Vector2 thisFrameJumpVector = Vector2.Lerp (new Vector2 (0f, jumpForce/jumpsCount), Vector2.zero, proportion);
+			rigidbody2D.AddForce (thisFrameJumpVector);
 			timer += Time.deltaTime;
 			yield return null;
 		}
@@ -178,5 +174,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 			timer += Time.deltaTime;
 			yield return null;
 		}
+		jumping = false;
+		touchingWall = false;
 	}
 }
