@@ -1,0 +1,18 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MecaImp\SanteVoiture.cs">
+    <Files>
+      <File FileName="Assets\MecaImp\JaugeVitesse.cs" Line="2" Column="22" />
+      <File FileName="Assets\MecaImp\JaugeBoost.cs" Line="1" Column="1" />
+      <File FileName="Assets\Sample Assets\Vehicles\Car\Scripts\CarGUI.cs" Line="1" Column="1" />
+      <File FileName="Assets\Cadriciel\Scripts\CarUserControlMP.cs" Line="1" Column="1" />
+      <File FileName="Assets\MecaImp\EtatVoiture.cs" Line="25" Column="3" />
+      <File FileName="Assets\Sample Assets\Vehicles\Car\Scripts\CarController.cs" Line="1" Column="1" />
+      <File FileName="Assets\MecaImp\SanteVoiture.cs" Line="6" Column="15" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
