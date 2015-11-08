@@ -1,14 +1,18 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MecaImp\SanteVoiture.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MecaImp\MalusAccelerateur.cs">
     <Files>
-      <File FileName="Assets\MecaImp\JaugeVitesse.cs" Line="2" Column="22" />
-      <File FileName="Assets\MecaImp\JaugeBoost.cs" Line="1" Column="1" />
+      <File FileName="Assets\Cadriciel\Scripts\CarUserControlMP.cs" Line="50" Column="1" />
+      <File FileName="Assets\MecaImp\JaugeVitesse.cs" Line="28" Column="3" />
+      <File FileName="Assets\MecaImp\JaugeBoost.cs" Line="22" Column="105" />
       <File FileName="Assets\Sample Assets\Vehicles\Car\Scripts\CarGUI.cs" Line="1" Column="1" />
-      <File FileName="Assets\Cadriciel\Scripts\CarUserControlMP.cs" Line="1" Column="1" />
-      <File FileName="Assets\MecaImp\EtatVoiture.cs" Line="25" Column="3" />
-      <File FileName="Assets\Sample Assets\Vehicles\Car\Scripts\CarController.cs" Line="1" Column="1" />
-      <File FileName="Assets\MecaImp\SanteVoiture.cs" Line="6" Column="15" />
+      <File FileName="Assets\MecaImp\EtatVoiture.cs" Line="44" Column="44" />
+      <File FileName="Assets\Sample Assets\Vehicles\Car\Scripts\CarController.cs" Line="194" Column="2" />
+      <File FileName="Assets\MecaImp\Score.cs" Line="11" Column="50" />
+      <File FileName="Assets\MecaImp\SanteVoiture.cs" Line="7" Column="2" />
+      <File FileName="Assets\Sample Assets\Cross Platform Input\Scripts\PlatformSpecific\StandaloneInput.cs" Line="6" Column="1" />
+      <File FileName="Assets\MecaImp\BonusAccelerateur.cs" Line="6" Column="45" />
+      <File FileName="Assets\MecaImp\MalusAccelerateur.cs" Line="14" Column="19" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

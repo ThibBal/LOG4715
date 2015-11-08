@@ -263,6 +263,85 @@ MonoBehaviour:
     - {fileID: 1793631503}
   smoothRoute: 1
   editorVisualisationSubsteps: 100
+--- !u!1 &5249780
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 5249781}
+  - 222: {fileID: 5249784}
+  - 114: {fileID: 5249783}
+  - 114: {fileID: 5249782}
+  m_Layer: 5
+  m_Name: Score
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5249781
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 5249780}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1138483238}
+  m_RootOrder: 4
+  m_AnchorMin: {x: 1, y: .5}
+  m_AnchorMax: {x: 1, y: .5}
+  m_AnchoredPosition: {x: -100, y: 30}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &5249782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 5249780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a50b0646c74a364898adf1e66643c43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: {fileID: 5249783}
+--- !u!114 &5249783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 5249780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 5
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &5249784
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 5249780}
 --- !u!1 &5794645
 GameObject:
   m_ObjectHideFlags: 0
@@ -8550,6 +8629,7 @@ GameObject:
   - 114: {fileID: 481286552}
   - 114: {fileID: 481286556}
   - 114: {fileID: 481286558}
+  - 114: {fileID: 481286559}
   m_Layer: 8
   m_Name: Joueur 1
   m_TagString: Player
@@ -8615,6 +8695,11 @@ MonoBehaviour:
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
   preserveDirectionWhileInAir: 1
+  airPoints: 2
+  murDegats: -3
+  joueurDegats: -2
+  sautForce: 150
+  rotationAir: 100
 --- !u!114 &481286552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8695,6 +8780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccf05cb758fa6ad40b25b08af07b77c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saut: 0
   vertical: Vertical
   horizontal: Horizontal
 --- !u!54 &481286557
@@ -8727,6 +8813,19 @@ MonoBehaviour:
   car: {fileID: 481286551}
   PVmax: 50
   PVvoiture: 50
+  Score: 0
+--- !u!114 &481286559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 481286549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26bf866b9adf0e543ba85957e82b5f3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fleche: {fileID: 1330892132}
 --- !u!1 &487389443
 GameObject:
   m_ObjectHideFlags: 0
@@ -9255,6 +9354,22 @@ Prefab:
     - target: {fileID: 11400030, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
       propertyPath: maxSpeedSteerAngle
       value: .156000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400030, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
+      propertyPath: murDegats
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400030, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
+      propertyPath: joueurDegats
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400030, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
+      propertyPath: sautForce
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400030, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
+      propertyPath: rotationAir
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400026, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
@@ -18779,6 +18894,11 @@ MonoBehaviour:
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
   preserveDirectionWhileInAir: 1
+  airPoints: 2
+  murDegats: -3
+  joueurDegats: -2
+  sautForce: .5
+  rotationAir: 50
 --- !u!54 &981142460
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18827,6 +18947,7 @@ MonoBehaviour:
   car: {fileID: 981142459}
   PVmax: 50
   PVvoiture: 50
+  Score: 0
 --- !u!1 &982943094
 GameObject:
   m_ObjectHideFlags: 0
@@ -19479,7 +19600,7 @@ GameObject:
   - 65: {fileID: 1052194670}
   m_Layer: 0
   m_Name: Pillar 2x8x2
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21386,6 +21507,7 @@ RectTransform:
   - {fileID: 2061615610}
   - {fileID: 835997473}
   - {fileID: 1738640096}
+  - {fileID: 5249781}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_AnchorMin: {x: 0, y: 0}
@@ -21920,6 +22042,10 @@ Prefab:
     - target: {fileID: 400000, guid: 44884af1ac1d64d42902da40268ba120, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 44884af1ac1d64d42902da40268ba120, type: 2}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44884af1ac1d64d42902da40268ba120, type: 2}
@@ -26203,6 +26329,7 @@ Transform:
   - {fileID: 247879814}
   - {fileID: 1158101499}
   - {fileID: 438218562}
+  - {fileID: 1330892131}
   m_Father: {fileID: 0}
   m_RootOrder: 1
 --- !u!1 &1316483489
@@ -26600,6 +26727,57 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1260655689}
   m_GameObject: {fileID: 1327940361}
   m_Mesh: {fileID: 4300000, guid: b9d7ac1a0f551404f8d32e1e02b64325, type: 3}
+--- !u!1 &1330892130
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1330892131}
+  - 132: {fileID: 1330892132}
+  m_Layer: 0
+  m_Name: IndicationVirage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1330892131
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1330892130}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .5, y: .5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1305879589}
+  m_RootOrder: 3
+--- !u!132 &1330892132
+GUIText:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1330892130}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Text: Virage
+  m_Anchor: 1
+  m_Alignment: 1
+  m_PixelOffset: {x: 0, y: 150}
+  m_LineSpacing: 1
+  m_TabSize: 4
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Material: {fileID: 0}
+  m_FontSize: 50
+  m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4284612352
+  m_PixelCorrect: 1
+  m_RichText: 1
 --- !u!1 &1331203292
 GameObject:
   m_ObjectHideFlags: 0
@@ -26990,6 +27168,11 @@ MonoBehaviour:
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
   preserveDirectionWhileInAir: 1
+  airPoints: 2
+  murDegats: -3
+  joueurDegats: -2
+  sautForce: .5
+  rotationAir: 50
 --- !u!114 &1368033982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27137,6 +27320,7 @@ MonoBehaviour:
   car: {fileID: 1368033981}
   PVmax: 50
   PVvoiture: 50
+  Score: 0
 --- !u!1 &1371417689
 GameObject:
   m_ObjectHideFlags: 0
@@ -28038,6 +28222,90 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1705016575}
   m_GameObject: {fileID: 1470033512}
   m_Mesh: {fileID: 4300006, guid: e6fec471c20b9d148b1f87910e67bea4, type: 3}
+--- !u!1 &1475871440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1475871441}
+  - 33: {fileID: 1475871444}
+  - 64: {fileID: 1475871443}
+  - 23: {fileID: 1475871442}
+  - 114: {fileID: 1475871445}
+  m_Layer: 0
+  m_Name: Bonus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1475871441
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1475871440}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 195.649994, z: 250}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1986023726}
+  m_RootOrder: 0
+--- !u!23 &1475871442
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1475871440}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: ddc43c773f7a8c347b23e831bb1e57eb, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!64 &1475871443
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1475871440}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &1475871444
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1475871440}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1475871445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1475871440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddad13f08b8ac69419e3126ae1db45dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VitesseBonus: 30
+  Duree: 1.5
 --- !u!1 &1477828578
 GameObject:
   m_ObjectHideFlags: 0
@@ -28484,6 +28752,10 @@ Prefab:
     - target: {fileID: 400000, guid: 44884af1ac1d64d42902da40268ba120, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 44884af1ac1d64d42902da40268ba120, type: 2}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44884af1ac1d64d42902da40268ba120, type: 2}
@@ -30648,6 +30920,11 @@ MonoBehaviour:
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
   preserveDirectionWhileInAir: 1
+  airPoints: 2
+  murDegats: -3
+  joueurDegats: -2
+  sautForce: .5
+  rotationAir: 50
 --- !u!114 &1635867385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30795,6 +31072,7 @@ MonoBehaviour:
   car: {fileID: 1635867384}
   PVmax: 50
   PVvoiture: 50
+  Score: 0
 --- !u!1 &1636046887
 GameObject:
   m_ObjectHideFlags: 0
@@ -32301,7 +32579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca68afbdcbf1664d9ba95c0f7446897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 1738640097}
+  sante: {fileID: 1738640097}
 --- !u!1 &1745187271
 GameObject:
   m_ObjectHideFlags: 0
@@ -33055,7 +33333,7 @@ GameObject:
   - 65: {fileID: 1804739140}
   m_Layer: 0
   m_Name: Pillar 2x8x2
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34595,6 +34873,11 @@ MonoBehaviour:
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
   preserveDirectionWhileInAir: 1
+  airPoints: 2
+  murDegats: -3
+  joueurDegats: -2
+  sautForce: .5
+  rotationAir: 50
 --- !u!54 &1881066739
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -34648,6 +34931,7 @@ MonoBehaviour:
   car: {fileID: 1881066738}
   PVmax: 50
   PVvoiture: 50
+  Score: 0
 --- !u!1 &1885422050
 GameObject:
   m_ObjectHideFlags: 0
@@ -34816,6 +35100,10 @@ Prefab:
     - target: {fileID: 400000, guid: 44884af1ac1d64d42902da40268ba120, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 44884af1ac1d64d42902da40268ba120, type: 2}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44884af1ac1d64d42902da40268ba120, type: 2}
@@ -37061,7 +37349,7 @@ GameObject:
   - 65: {fileID: 1972544822}
   m_Layer: 0
   m_Name: Pillar 2x8x2
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37329,6 +37617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccf05cb758fa6ad40b25b08af07b77c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saut: 0
   vertical: Vertical2
   horizontal: Horizontal2
 --- !u!114 &1977983690
@@ -37368,6 +37657,11 @@ MonoBehaviour:
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
   preserveDirectionWhileInAir: 1
+  airPoints: 2
+  murDegats: -3
+  joueurDegats: -2
+  sautForce: .5
+  rotationAir: 50
 --- !u!54 &1977983691
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -37398,6 +37692,36 @@ MonoBehaviour:
   car: {fileID: 1977983690}
   PVmax: 50
   PVvoiture: 50
+  Score: 0
+--- !u!1 &1986023725
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1986023726}
+  m_Layer: 0
+  m_Name: BonusSol
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1986023726
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1986023725}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1475871441}
+  - {fileID: 2087048356}
+  m_Father: {fileID: 2047550982}
+  m_RootOrder: 7
 --- !u!1 &1988760123
 GameObject:
   m_ObjectHideFlags: 0
@@ -38644,6 +38968,11 @@ MonoBehaviour:
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
   preserveDirectionWhileInAir: 1
+  airPoints: 2
+  murDegats: -3
+  joueurDegats: -2
+  sautForce: .5
+  rotationAir: 50
 --- !u!114 &2042105153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38791,6 +39120,7 @@ MonoBehaviour:
   car: {fileID: 2042105152}
   PVmax: 50
   PVvoiture: 50
+  Score: 0
 --- !u!1 &2047550981
 GameObject:
   m_ObjectHideFlags: 0
@@ -38823,6 +39153,7 @@ Transform:
   - {fileID: 691674701}
   - {fileID: 1256335154}
   - {fileID: 2123269359}
+  - {fileID: 1986023726}
   m_Father: {fileID: 0}
   m_RootOrder: 3
 --- !u!1001 &2049109060
@@ -39193,6 +39524,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 44884af1ac1d64d42902da40268ba120, type: 2}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44884af1ac1d64d42902da40268ba120, type: 2}
   m_RootGameObject: {fileID: 1052194668}
@@ -39526,6 +39861,90 @@ Light:
   m_ShadowAngle: 0
   m_IndirectIntensity: 1
   m_AreaSize: {x: 1, y: 1}
+--- !u!1 &2087048355
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2087048356}
+  - 33: {fileID: 2087048360}
+  - 64: {fileID: 2087048359}
+  - 23: {fileID: 2087048358}
+  - 114: {fileID: 2087048357}
+  m_Layer: 0
+  m_Name: Malus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2087048356
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2087048355}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 390, y: 195.649994, z: 160}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1986023726}
+  m_RootOrder: 1
+--- !u!114 &2087048357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2087048355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad28f61e1fd6d949b1d9db34631f950, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VitesseBonus: -30
+  Duree: 1.5
+--- !u!23 &2087048358
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2087048355}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: 43ec2c7e837c0394080e57b3269ebb50, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!64 &2087048359
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2087048355}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &2087048360
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2087048355}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &2089808817
 GameObject:
   m_ObjectHideFlags: 0
@@ -39612,7 +40031,7 @@ GameObject:
   - 65: {fileID: 2090683121}
   m_Layer: 0
   m_Name: Pillar 2x8x2
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39767,6 +40186,11 @@ MonoBehaviour:
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
   preserveDirectionWhileInAir: 1
+  airPoints: 2
+  murDegats: -3
+  joueurDegats: -2
+  sautForce: .5
+  rotationAir: 2.5
 --- !u!114 &2099699819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39914,6 +40338,7 @@ MonoBehaviour:
   car: {fileID: 2099699818}
   PVmax: 50
   PVvoiture: 50
+  Score: 0
 --- !u!1001 &2099877694
 Prefab:
   m_ObjectHideFlags: 0
@@ -40887,6 +41312,10 @@ Prefab:
     - target: {fileID: 11400004, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: maxSpeedSteerAngle
       value: .156000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
+      propertyPath: rotationAir
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}

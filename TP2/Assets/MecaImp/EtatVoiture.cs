@@ -7,6 +7,7 @@ public class EtatVoiture :	MonoBehaviour {
 	private float boost = 50;
 	public int PVmax = 50;
 	public int PVvoiture = 50;
+	public int Score = 0;
 
 	public float Boost {
 		get {
@@ -40,13 +41,15 @@ public class EtatVoiture :	MonoBehaviour {
 		}
 
 		if (this.PVvoiture <= 0) {
-			car.modifierVitesseMax(car.MaxSpeed/10);
+			car.modifierVitesseMax(car.MaxSpeed/1.5f);
 		} else if (this.PVvoiture < this.PVmax/5) {
-			car.modifierVitesseMax(car.MaxSpeed/4);
+			car.modifierVitesseMax(car.MaxSpeed/1.3f);
 		} else if (this.PVvoiture < this.PVmax/2) {
-			car.modifierVitesseMax(car.MaxSpeed/2);
+			car.modifierVitesseMax(car.MaxSpeed/1.15f);
 		}
 	}
 
-
+	public void changerScore(int points){
+		this.Score += points;
+	}
 }

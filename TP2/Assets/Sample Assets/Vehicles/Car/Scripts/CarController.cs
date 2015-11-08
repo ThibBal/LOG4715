@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class CarController : MonoBehaviour
 {
@@ -27,6 +28,11 @@ public class CarController : MonoBehaviour
     [SerializeField] private float adjustCentreOfMass = 0.25f;                      // vertical offset for the centre of mass
     [SerializeField] private Advanced advanced;                                     // container for the advanced setting which will expose as a foldout in the inspector
 	[SerializeField] bool preserveDirectionWhileInAir = false;                      // flag for if the direction of travel to be preserved in the air (helps cars land in the right direction if doing huge jumps!)
+	[SerializeField] private int airPoints = 2;
+	[SerializeField] private int murDegats = -3;
+	[SerializeField] private int joueurDegats = -2;
+	[SerializeField] private float sautForce = 0.5f;
+	[SerializeField] private float rotationAir = 50;
 
 	// Pour le boost de vitesse
 	private bool boost = false;
@@ -143,13 +149,11 @@ public class CarController : MonoBehaviour
 	float targetAccelInput; // target accel input is our desired acceleration input. We smooth towards it later
 
 
-
-
 	void Awake ()
     {
 		// get a reference to all wheel attached to the car.
 		wheels = GetComponentsInChildren<Wheel>();
-
+		anyOnGround = true;
 		SetUpGears();
 
 		// deactivate and reactivate the gameobject - this is a workaround
@@ -188,6 +192,17 @@ public class CarController : MonoBehaviour
 
 	}
 
+	// Controle Aérien
+	// Source: http://answers.unity3d.com/questions/799824/oafatwhy-does-transformrotationx-45-not-work.html
+	public void controleAérien(float h, float v, float r){
+		if (!anyOnGround)
+		{
+			transform.Rotate(Vector3.right, v * rotationAir * Time.fixedDeltaTime);
+			transform.Rotate(Vector3.up, h * rotationAir * Time.fixedDeltaTime);
+			transform.Rotate(Vector3.forward, r * rotationAir * Time.fixedDeltaTime);
+		}
+	}
+	
 	void ConvertInputToAccelerationAndBraking (float accelBrakeInput)
 	{
 		// move.Z is the user's fwd/back input. We need to convert it into acceleration and braking.
@@ -385,14 +400,47 @@ public class CarController : MonoBehaviour
 
 	void OnCollisionEnter(Collision collision) {
 		string tag = collision.gameObject.tag;
-		Debug.Log (collision.gameObject.tag);
 		etat = GetComponent<EtatVoiture> ();
 
 		if (tag == "Wall") {
-			etat.changerPV(-5);
+			etat.changerPV(murDegats);
 		}
 		if (tag == "Player") {
-			etat.changerPV(-1);
+			etat.changerPV(joueurDegats);
+		}
+	}
+
+	void FixedUpdate() {
+
+		// Debut des figures de style
+		Collider[] environnementProche = Physics.OverlapSphere (transform.position, 1.0f);
+		etat = GetComponent<EtatVoiture> ();
+
+		foreach (Collider col in environnementProche){
+			if (col.gameObject.name == "Cars")
+			{
+				Debug.Log(col.name);
+			}
+//			Transform frolage = environnementProche[i].transform;
+//			if (col.gameObject.name == "Cars") 
+//			{
+//				string nomVoitureProche = frolage.parent.parent.name;
+//				if (nomVoitureProche == "Joueur 1") 
+//				{
+//
+//				}
+//			}
+		}
+
+		if (!anyOnGround) {
+			etat.changerScore(airPoints);
+		}
+	}
+
+
+	public void Sauter(){
+		if (anyOnGround) {
+			rigidbody.AddForce(Vector3.up * sautForce);
 		}
 	}
 

@@ -52,10 +52,14 @@
      <Compile Include="Assets\Cadriciel\Scripts\MultiplayerMode.cs" />
      <Compile Include="Assets\Cadriciel\Scripts\RaceManager.cs" />
      <Compile Include="Assets\Cadriciel\Scripts\StartScreenManager.cs" />
+     <Compile Include="Assets\MecaImp\BonusAccelerateur.cs" />
      <Compile Include="Assets\MecaImp\EtatVoiture.cs" />
+     <Compile Include="Assets\MecaImp\IndicationVirage.cs" />
      <Compile Include="Assets\MecaImp\JaugeBoost.cs" />
      <Compile Include="Assets\MecaImp\JaugeVitesse.cs" />
+     <Compile Include="Assets\MecaImp\MalusAccelerateur.cs" />
      <Compile Include="Assets\MecaImp\SanteVoiture.cs" />
+     <Compile Include="Assets\MecaImp\Score.cs" />
      <Compile Include="Assets\Sample Assets\Cameras\Scripts\AbstractTargetFollower.cs" />
      <Compile Include="Assets\Sample Assets\Cameras\Scripts\AutoCam.cs" />
      <Compile Include="Assets\Sample Assets\Cameras\Scripts\FreeLookCam.cs" />

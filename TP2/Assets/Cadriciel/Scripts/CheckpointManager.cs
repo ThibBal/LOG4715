@@ -49,12 +49,23 @@ public class CheckpointManager : MonoBehaviour
 					if (IsPlayer(car))
 					{
 						GetComponent<RaceManager>().Announce("Tour " + (carData.lap+1).ToString());
+						EtatVoiture etat = car.GetComponent<EtatVoiture>();
+						// Ajoute 150 points à chaque tour
+					 	etat.changerScore(150);
+						// Ajoute 15 points de vie à chaque tour
+						etat.changerPV(15);
 					}
 
 					if (carData.lap >= _totalLaps)
 					{
 						_finished = true;
 						GetComponent<RaceManager>().EndRace(car.name.ToLower());
+
+						if (IsPlayer(car))
+						{
+							// Ajoute 1500 points si on termine la course 1er
+							car.GetComponent<EtatVoiture>().changerScore(1500);
+						}
 					}
 				}
 			}

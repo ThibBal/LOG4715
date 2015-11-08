@@ -1,14 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SanteVoiture : MonoBehaviour {
+public class Score : MonoBehaviour {
 	
-	public Text sante;
+	public Text score;
 
 	void Update ()
 	{
 		GameObject player = GameObject.Find("Joueur 1");
 		EtatVoiture etatVoiture = player.GetComponent<EtatVoiture>();
-		sante.text = "PV : " + etatVoiture.PVvoiture.ToString () + "/" + etatVoiture.PVmax.ToString ();				
+		score.text = "Score : " + etatVoiture.Score.ToString ();				
 	}
 }
