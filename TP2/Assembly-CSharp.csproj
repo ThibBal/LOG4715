@@ -58,6 +58,7 @@
      <Compile Include="Assets\MecaImp\JaugeBoost.cs" />
      <Compile Include="Assets\MecaImp\JaugeVitesse.cs" />
      <Compile Include="Assets\MecaImp\MalusAccelerateur.cs" />
+     <Compile Include="Assets\MecaImp\Replacement.cs" />
      <Compile Include="Assets\MecaImp\SanteVoiture.cs" />
      <Compile Include="Assets\MecaImp\Score.cs" />
      <Compile Include="Assets\Sample Assets\Cameras\Scripts\AbstractTargetFollower.cs" />

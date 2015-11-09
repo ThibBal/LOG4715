@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour {
 	
 	public Text score;
-
+	// Affichage du score du joueur
 	void Update ()
 	{
 		GameObject player = GameObject.Find("Joueur 1");

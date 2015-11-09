@@ -7,10 +7,12 @@ public class BonusAccelerateur : MonoBehaviour {
 	
 	void OnCollisionEnter(Collision collision)
 	{
+		// Si la voiture est en collision avec la plaque d'accélération
 		Rigidbody car = collision.gameObject.GetComponent<Rigidbody>();
 		StartCoroutine("BonusCoroutine", car);
 	}
-	
+
+	//Coroutine du bonus
 	IEnumerator BonusCoroutine(Rigidbody car)
 	{
 		float time = 0f;

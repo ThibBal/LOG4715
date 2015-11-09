@@ -7,10 +7,12 @@ public class MalusAccelerateur : MonoBehaviour {
 	
 	void OnCollisionEnter(Collision collision)
 	{
+		// Si la voiture est en collision avec la plaque de décélération
 		Rigidbody car = collision.gameObject.GetComponent<Rigidbody>();
 		StartCoroutine("MalusCoroutine", car);
 	}
-	
+
+	//Coroutine de malus
 	IEnumerator MalusCoroutine(Rigidbody car)
 	{
 		float time = 0f;

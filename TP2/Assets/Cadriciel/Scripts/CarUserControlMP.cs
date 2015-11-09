@@ -50,9 +50,5 @@ public class CarUserControlMP : MonoBehaviour
 		car.controleAérien (h, v, r);
 		car.Move(h,v);
 
-		//HashSet<string> voituresEnFrolageCurrentFrame = new HashSet<string>();
-		
-
-
 	}
 }

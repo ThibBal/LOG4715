@@ -20,7 +20,8 @@ public class JaugeVitesse : MonoBehaviour {
 		vitesse = carController.CurrentSpeed;
 	}
 
-	//Affichage du cadran avec une aiguille pour le compteur vitesse. Source: https://www.youtube.com/watch?v=UbzbYDhJQRQ
+	//Affichage du cadran avec une aiguille pour le compteur vitesse. 
+	//Source: https://www.youtube.com/watch?v=UbzbYDhJQRQ
 	void OnGUI() {
 		GUI.DrawTexture(new Rect(Screen.width - 150,Screen.height-150,100,50),cadranVitesse);
 		float spFactor = vitesse / vitesseMax;

@@ -412,32 +412,16 @@ public class CarController : MonoBehaviour
 
 	void FixedUpdate() {
 
-		// Debut des figures de style
-		Collider[] environnementProche = Physics.OverlapSphere (transform.position, 1.0f);
-		etat = GetComponent<EtatVoiture> ();
-
-		foreach (Collider col in environnementProche){
-			if (col.gameObject.name == "Cars")
-			{
-				Debug.Log(col.name);
-			}
-//			Transform frolage = environnementProche[i].transform;
-//			if (col.gameObject.name == "Cars") 
-//			{
-//				string nomVoitureProche = frolage.parent.parent.name;
-//				if (nomVoitureProche == "Joueur 1") 
-//				{
-//
-//				}
-//			}
-		}
+		// Debut de la mécanique de frolage
+		//Collider[] environnementProche = Physics.OverlapSphere (transform.position, 1.0f);
+		//etat = GetComponent<EtatVoiture> ();
 
 		if (!anyOnGround) {
 			etat.changerScore(airPoints);
 		}
 	}
 
-
+	//Fonction de saut
 	public void Sauter(){
 		if (anyOnGround) {
 			rigidbody.AddForce(Vector3.up * sautForce);
